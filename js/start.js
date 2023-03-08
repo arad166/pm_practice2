@@ -1,6 +1,5 @@
 var pm = pm || {};
-pm.dom = pm.dom || {};
-pm.dom.start = pm.dom.start || {};
+pm.start = pm.start || {};
 
 (function(_){
     _.element = document.querySelector('.start');
@@ -9,4 +8,4 @@ pm.dom.start = pm.dom.start || {};
         return element.classList.contains('start');
     };
 
-})(pm.dom.start);
+})(pm.start);

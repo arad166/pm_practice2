@@ -1,12 +1,11 @@
 var pm = pm || {};
-pm.dom = pm.dom || {};
-pm.dom.problem = pm.dom.problem || {};
+pm.problem = pm.problem || {};
 
 (function(_){
     _.problem = document.querySelector('.problem');
 
     _.init = function(element){
-        _.problem.textContent = "init";
+        _.problem.textContent = "ここに問題が表示されます";
     }
 
     _.viewProblem = function(x,y,t){
@@ -43,4 +42,4 @@ pm.dom.problem = pm.dom.problem || {};
         else return x-y;
     }
     
-})(pm.dom.problem);
+})(pm.problem);

@@ -1,10 +1,11 @@
 var pm = pm || {};
-pm.dom = pm.dom || {};
-pm.dom.answer = pm.dom.answer || {};
+pm.answer = pm.answer || {};
 
 (function(_){
-    _.element = document.querySelector('.answer');
+    _.editor = document.querySelector('.answer');
 
-    
+    _.focusToEditor = function(element){
+        _.editor.focus();
+    }
 
-})(pm.dom.answer);
+})(pm.answer);

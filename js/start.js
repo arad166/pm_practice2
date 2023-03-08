@@ -9,8 +9,4 @@ pm.dom.start = pm.dom.start || {};
         return element.classList.contains('start');
     };
 
-    _.start = function(element){
-        window.alert("Hello");
-    };
-
 })(pm.dom.start);

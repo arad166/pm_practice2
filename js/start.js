@@ -1,6 +1,6 @@
-var problem = problem || {};
-problem.dom = problem.dom || {};
-problem.dom.start = problem.dom.start || {};
+var pm = pm || {};
+pm.dom = pm.dom || {};
+pm.dom.start = pm.dom.start || {};
 
 (function(_){
     _.element = document.querySelector('.start');
@@ -13,4 +13,4 @@ problem.dom.start = problem.dom.start || {};
         window.alert("Hello");
     };
 
-})(problem.dom.start);
+})(pm.dom.start);

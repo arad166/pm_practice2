@@ -1,5 +1,6 @@
 (function(){
     pm.answer.editor.addEventListener('keydown',onKeydown);
+    document.addEventListener('keydown',onKeydown);
     document.addEventListener('keyup',onResetKeyup);
 
     var problemCount = document.querySelector('.count')
@@ -18,6 +19,7 @@
         if(ans === 100){
             ans = pm.problem.createProblem(event.target);
             pm.answer.init(event.target);
+            pm.answer.focusToEditor(event);
             pm.timer.start();
             return;
         }
@@ -45,7 +47,7 @@
         pm.problem.reset(event.target);
         pm.answer.reset(event.target);
         pm.timer.reset();
-        problemCount = "あと5問!";
+        problemCount.textContent = "あと5問!";
         solving = true;
     }
 

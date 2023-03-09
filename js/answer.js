@@ -8,4 +8,18 @@ pm.answer = pm.answer || {};
         _.editor.focus();
     }
 
+    _.reset = function(element){
+        _.editor.value = "";
+        _.editor.placeholder = "Enterキーでスタート"
+    }
+
+    _.init = function(element){
+        _.editor.value = "";
+        _.editor.placeholder = "Enterキーで解答"
+    }
+
+    _.finish = function(element){
+        _.editor.placeholder = ".キーでリセット"
+    }
+
 })(pm.answer);

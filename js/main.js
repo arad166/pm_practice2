@@ -1,35 +1,59 @@
 (function(){
-    pm.start.element.addEventListener('click',onStartClick);
     pm.answer.editor.addEventListener('keydown',onKeydown);
+    document.addEventListener('keyup',onResetKeyup);
 
-    function onStartClick(event){
-        if(pm.start.isStartButton(event.target)){
-            onStartButtonClick(event);
-        }
-    }
+    var problemCount = document.querySelector('.count')
 
-    function onStartButtonClick(event){
-        pm.problem.init("ここに問題が表示されます");
-        run(event);
-    }
+    var ans = 100;
+    var correctCount = 0;
+    var solving = true;
 
-    function onKeydown(event,ans){
+    function onKeydown(event){
         if(event.keyCode !== 13){
-            return false;
+            return;
         }
-        var res = false;
+        if(!solving){
+            return;
+        }
+        if(ans === 100){
+            ans = pm.problem.createProblem(event.target);
+            pm.answer.init(event.target);
+            pm.timer.start();
+            return;
+        }
         if(ans === pm.answer.editor.value-0){
-            res = true;
+            correctCount++;
+            problemCount.textContent = "あと"+(5-correctCount)+"問!"
+            ans = pm.problem.createProblem(event.target);
         }
-        pm.answer.editor.value = "";
-        return res;
+        pm.answer.init(event.target);
+        if(correctCount === 5){
+            finish(event);
+        }
     }
 
-    function run(event){
-        pm.answer.focusToEditor(event.target);
-        for(var i = 0;i < 5;i++){
-            var ans = pm.problem.createProblem(event.target);
+    function onResetKeyup(event){
+        if(event.keyCode !== 190){
+            return;
         }
+        reset(event);
+    }
+
+    function reset(event){
+        ans = 100;
+        correctCount = 0;
+        pm.problem.reset(event.target);
+        pm.answer.reset(event.target);
+        pm.timer.reset();
+        problemCount = "あと5問!";
+        solving = true;
+    }
+
+    function finish(event){
+        pm.problem.finish(event.target);
+        pm.answer.finish(event.target);
+        pm.timer.stop();
+        solving = false;
     }
 
 })();

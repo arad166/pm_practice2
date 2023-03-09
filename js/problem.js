@@ -4,8 +4,12 @@ pm.problem = pm.problem || {};
 (function(_){
     _.problem = document.querySelector('.problem');
 
-    _.init = function(element){
+    _.reset = function(element){
         _.problem.textContent = "ここに問題が表示されます";
+    }
+
+    _.finish = function(element){
+        _.problem.textContent = "クリア！"
     }
 
     _.viewProblem = function(x,y,t){
@@ -33,7 +37,7 @@ pm.problem = pm.problem || {};
     }
 
     _.createProblem = function(element){
-        let max = 20,min=-20;
+        let max = 10,min=-10;
         var x = Math.floor(Math.random() * (max - min)) + min
         var y = Math.floor(Math.random() * (max - min)) + min
         var t = Math.floor(Math.random()-0.5);
